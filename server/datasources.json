@@ -1,0 +1,15 @@
+{
+  "db": {
+    "name": "db",
+    "connector": "memory"
+  },
+  "mysql": {
+    "name": "mysql",
+    "connector": "mysql",
+    "host": "localhost",
+    "port": 3306,
+    "database": "kinetic",
+    "username": "root",
+    "password": ""
+  }
+}

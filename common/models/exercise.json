@@ -1,0 +1,75 @@
+{
+  "name": "exercise",
+  "plural": "exercises",
+  "base": "PersistedModel",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true,
+    "mysql": {
+      "schema": "LOOPBACK",
+      "table": "exercise"
+    }
+  },
+  "properties": {
+    "id": {
+      "type": "number",
+      "required": true,
+      "mysql":{
+        "columnName":"ID",
+        "dataType":"INT",
+        "nullable":"N"
+      }
+    },
+    "programid": {
+      "type": "number",
+      "required": true,
+      "mysql":{
+        "columnName":"PROGRAMID",
+        "dataType":"INT",
+        "nullable":"N"
+      }
+    },
+    "name": {
+      "type": "string",
+      "required": true,
+      "mysql":{
+        "columnName":"NAME",
+        "dataType":"VARCHAR",
+        "dataLength":64,
+        "nullable":"N"
+      }
+    },
+    "reps": {
+      "type": "number",
+      "mysql":{
+        "columnName":"REPS",
+        "dataType":"INT"
+      }
+    },
+    "sets": {
+      "type": "number",
+      "mysql":{
+        "columnName":"SETS",
+        "dataType":"INT"
+      }
+    },
+    "pace": {
+      "type": "number",
+      "mysql":{
+        "columnName":"PACE",
+        "dataType":"INT"
+      }
+    },
+    "weight": {
+      "type": "number",
+      "mysql":{
+        "columnName":"WEIGHT",
+        "dataType":"INT"
+      }
+    }
+  },
+  "validations": [],
+  "relations": {},
+  "acls": [],
+  "methods": {}
+}

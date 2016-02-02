@@ -1,0 +1,47 @@
+{
+  "name": "program",
+  "plural": "programs",
+  "base": "PersistedModel",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true,
+    "mysql": {
+      "schema": "LOOPBACK",
+      "table": "program"
+    }
+  },
+  "properties": {
+    "id": {
+      "type": "number",
+      "required": true,
+      "mysql":{
+        "columnName":"ID",
+        "dataType":"INT",
+        "nullable":"N"
+      }
+    },
+    "name": {
+      "type": "string",
+      "required": true,
+      "mysql":{
+        "columnName":"NAME",
+        "dataType":"VARCHAR",
+        "dataLength":64,
+        "nullable":"N"
+      }
+    },
+    "description": {
+      "type": "string",
+      "required": true,
+      "mysql":{
+        "columnName":"DESCRIPTION",
+        "dataType":"TEXT",
+        "nullable":"N"
+      }
+    }
+  },
+  "validations": [],
+  "relations": {},
+  "acls": [],
+  "methods": {}
+}
