@@ -1,7 +1,7 @@
 var path = require('path');
 var app = require(path.resolve(__dirname, '../server/server'));
 var ds = app.datasources.mysql;
-ds.automigrate(function(err) {
+ds.autoupdate(function(err) {
   if (err) throw err;
   var programs = require('./preload.json').programs;
   var exercises = require('./preload.json').exercises;

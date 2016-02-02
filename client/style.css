@@ -1,0 +1,9 @@
+ol > li{
+  display:inline-block;
+  vertical-align:top;
+  padding:8px;
+  padding-left:16px;
+  -webkit-box-shadow: 2px 2px 2px 0px rgba(0,0,0,0.50);
+  -moz-box-shadow: 2px 2px 2px 0px rgba(0,0,0,0.50);
+  box-shadow: 2px 2px 2px 0px rgba(0,0,0,0.50);
+}

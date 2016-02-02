@@ -66,6 +66,13 @@
         "columnName":"WEIGHT",
         "dataType":"INT"
       }
+    },
+    "duration": {
+      "type": "number",
+      "mysql":{
+        "columnName":"DURATION",
+        "dataType":"INT"
+      }
     }
   },
   "validations": [],

@@ -1,0 +1,67 @@
+<!doctype html>
+<html ng-app="application" ng-controller="controller">
+  <head>
+    <title></title>
+    <link rel="stylesheet" type="text/css" href="./style.css">
+  </head>
+  <body>
+      <form>
+        <h3>
+          Create New Program
+        </h3>
+          <label style='vertical-align:top'>Name* <input style='vertical-align:top' ng-model='pName'>
+          </label>
+          <label style='vertical-align:top'>Description* <textarea style='vertical-align:top' ng-model='pDescription'></textarea>
+          </label>
+          <input type=button value='Create Program' ng-click='newProgram()'>
+      </form>
+      <hr />
+        <div ng-show='current'>
+          <h3>Programs</h3>
+          Program Name : <select ng-model='current' ng-options='option.name for option in programs track by option.id' ng-change='fetchExercises()'>
+          </select>
+          <div> Description : {{current.description}}</div>
+          <form>
+            <h4>
+              Add Exercise
+            </h4>
+            <table>
+              <tr><td>Name* </td><td> <input ng-model='eName'>
+              </td></tr>
+              <tr><td>Reps </td><td> <input ng-model='eReps'>
+              </td></tr>
+              <tr><td>Sets </td><td> <input ng-model='eSets'>
+              </td></tr>
+              <tr><td>Pace </td><td> <input ng-model='ePace'>
+              </td></tr>
+              <tr><td>Weight  </td><td> <input ng-model='eWeight'>
+              </td></tr>
+              <tr><td>Duration </td><td> <input ng-model='eDuration'>
+              </td></tr>
+            </table>
+            <input type=button value='Add Exercise' ng-click='newExercise()'>
+          </form>
+          <ol >
+            <li ng-repeat='exercise in current.exercises'>
+              <h2 title={{exercise.id}}>{{exercise.name}}</h2>
+              <table>
+                <tr ng-if='exercise.reps'><td>Reps </td><td> {{exercise.reps}}</td></tr>
+                <tr ng-if='exercise.sets'><td>Sets </td><td> {{exercise.sets}}</td></tr>
+                <tr ng-if='exercise.pace'><td>Pace </td><td> {{exercise.pace}}</td></tr>
+                <tr ng-if='exercise.weight'><td>Weight  </td><td> {{exercise.weight}}</td></tr>
+                <tr ng-if='exercise.duration'><td>Duration </td><td> {{exercise.duration}}</td></tr>
+              </table>
+            </li>
+          </ol>
+        </div>
+    <script
+      src='./bower_components/angular/angular.js'>
+    </script>
+    <script
+      src="./bower_components/angular-resource/angular-resource.js">
+    </script>
+    <script src='./samplePrograms.js'></script>
+    <script src='./ng-kinetic.js'></script>
+    <script src='./script.js'></script>
+  </body>
+</html>
