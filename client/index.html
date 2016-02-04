@@ -19,7 +19,7 @@
       <hr />
         <div ng-show='current' ng-cloak>
           <h3>Select Existing Program: <select ng-model='current' ng-options='option.name for option in programs track by option.id' ng-change='fetchExercises()'></select> <input type=button value='Reload Programs' ng-click='load()'>
-</h3>
+          </h3>
           <h3>{{current.name}}</h3>
           <div><em>{{current.description}}</em></div>
 

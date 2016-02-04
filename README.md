@@ -339,7 +339,7 @@ Add a script tag with a link to this file to the end of the body after the last 
   </body>
 ```
 
-###Custom scripts
+###Custom script
 Create a custom script named 'client/script.js' that will reference the above dependencies. Add a script tag for it after the previous scripts.
 
 ```html
@@ -349,3 +349,21 @@ Create a custom script named 'client/script.js' that will reference the above de
     <script src = './script.js'></script>
   </body>
 ```
+
+We'll come back to this later.
+
+###Markup
+
+We're going to want our application to live on the entire page. We'll let our controller live on the entire page as well. As such, we can add angular attributes to signify like so:
+
+
+####Controller and Application
+```html
+<!doctype>
+<html ng-app="application" ng-controller="controller">
+...
+```
+
+####The rest...
+
+At this point, I'm not even sure if it makes sense walking through building the application. Just check out the finished product. :p
