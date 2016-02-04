@@ -13,6 +13,7 @@ exercise
   sets
   pace
   weight
+  duration
 
 var prog = new Program({name});
 var exe = new Exercise({programid, name, reps, sets});
