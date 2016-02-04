@@ -1,12 +1,8 @@
 #Let's Build a Web App!
 In this tutorial, you'll learn to create a web application using [LoopBack](http://loopback.io) as a backend API server, and [Angular](http://) as a front-end framework.
 
-We'll be crating
-
 ##The Backend
-Were going to
-
-##Pre-Requesite:MySQL
+###Pre-Requesite:MySQL
 Before getting started with loopback, we're going to first need to first set up  a MySQL database.
 
 If you're using Mac OSX and have brew installed, this is easy. Simply type the command:
@@ -45,13 +41,13 @@ Once the database is created, you can exit the interface.
 exit;
 ```
 
-##Pre-Requesite:Node and npm
+###Pre-Requesite:Node and npm
 Before actually installing loopback, you'll need node and npm installed.
 
 Please visit [nodejs.org](https://nodejs.org) and follow the instructions for installing node. npm will be installed automatically along node.
 
 
-##Install Strongloop
+###Install Strongloop
 Loopback is actually part of the strong loop package. In order to install it on your system, type:
 
 ```bash
@@ -60,14 +56,14 @@ npm install -g strongloop
 
 This will install a number of command line utilities, including slc.
 
-##Create application
+###Create application
 With loopback installed, navigate to the directory where you want to create your application and type:
 
 ```bash
 slc loopback
 ```
 
-##Add MySQL connector
+###Add MySQL connector
 
 In order to connect to the MySQL server, you'll first need to install the mysql connector for loopback. To do this, type:
 
@@ -75,7 +71,7 @@ In order to connect to the MySQL server, you'll first need to install the mysql 
 npm install loopback-connector-mysql --save
 ```
 
-##Add MySQL as a datasource
+###Add MySQL as a datasource
 
 Create a datasource in your application by typing :
 
@@ -120,10 +116,10 @@ Add necessary attributes to the "mysql" object in order to connect to the databa
 }
 ```
 
-##Models
+###Models
 Our API is going to have two types of objects or 'models'.
 
-###Program
+####Program
 A program acts as a collection of exercises for the user to preform.
 The program model contains three fields:
 
@@ -131,7 +127,7 @@ The program model contains three fields:
 - name:string (required) - the name of the exercise program
 - description:string (required) - the description of the exercise program
 
-###Exercise
+####Exercise
 An exercise is part of a series of exercises associated with a particular program.
 The exercise model contains three required fields:
 
@@ -147,7 +143,7 @@ The program also contains a number of optional fields:
 - weight:number - weight amount in kilograms
 - duration:number - duration of exercise in minutes
 
-##Creating Models
+###Creating Models
 
 Create models by typing:
 
@@ -159,7 +155,7 @@ for each model. Be sure to input the proper names of each model ('program' and '
 
 This will generate a '.json' file and a '.js' file for each model locate in 'common/models/'.
 
-##Adding MySQL attributes
+###Adding MySQL attributes
 In each model's associated '.json' file, you'll need to manually add MySQL attributes.
 
 First, add an object with a key of "mysql" to "options" object. Give this a "schema" property with a value of "LOOPBACK" and a "table" property with the name of the model.
@@ -237,7 +233,7 @@ node bin/automigrate.js
 
 to create the corresponding tables within your mysql database. You can also type this if you want to reset your databases to an empty state.
 
-##Running the Application
+###Running the Application
 
 To run the application, type:
 
@@ -250,7 +246,7 @@ Navigate to 'localhost:3000/explorer' to see the swagger interact with the API.
 To stop the application, hold the 'control' key and type 'c'.
 
 
-##Setting up the client
+###Setting up the client
 
 If running, stop the application.
 
@@ -266,12 +262,90 @@ Now, all files within the 'client' directory will be accessible.
 
 Create a file named 'index.html' within the client directory and start the application. Navigate to 'localhost:3000/index.html' to view the file you created.
 
-##Creating the angular service with lb-ng.
+##The Front End
 
-When you installed strongloop, it installed a number of command line utilities. Type:
+Were going to use bower install front end dependencies.
+First create an empty html scaffold like this:
 
-```bash
-lb-ng server/server.js client/ng-kinetic.js
+```html
+<html>
+  <head>
+    <title></title>
+  </head>
+  <body>
+
+
+  </body>
+</html>
+
 ```
 
-to create a javascript file that can be loaded into your 'index.html 'file.
+and save it as 'client/index.html'.
+
+
+###Dependencies
+
+We'll use bower to manage dependencies. If you haven't already installed bower type:
+
+```bash
+npm install -g bower
+```
+
+###Dependencies: Angular, Angular Resource
+
+Install Angular, and Angular Resource by navigating into the 'client' directory and typing:
+
+```bash
+bower install angular angular-resource
+```
+Note, don't forget to navigate back to the previous directory after installing by typing:
+
+```bash
+cd -
+```
+
+Add a script tag with a link to angular as the source to the head of the html file. Putting this in the head is required for some features of angular, such as ng-cloak, to work.
+
+```html
+  ...
+    <script src = './bower_components/angular/angular.js'></script>
+  </head>
+```
+
+Add a script tag with a link to angular resource to the end of the body of the html file.
+
+```html
+  ...
+    <script src = './bower_components/angular-resource/angular-resource.js'></script>
+  </body>
+```
+
+###Creating the angular service with lb-ng.
+
+When you installed strongloop, it installed a number of command line utilities including lb-ng, that generates an angular service based on your models. Type:
+
+```bash
+lb-ng ./server/server.js ./client/ng-kinetic.js
+```
+
+to create a javascript file that can be loaded into the html file.
+
+Add a script tag with a link to this file to the end of the body after the last script you inserted.
+
+```html
+  ...
+    <script src = './bower_components/angular-resource/angular-resource.js'></script>
+    <script src = './ng-kinetic.js'></script>
+  </body>
+```
+
+###Custom scripts
+Create a custom script named 'client/script.js' that will reference the above dependencies. Add a script tag for it after the previous scripts.
+
+```html
+  ...
+    <script src = './bower_components/angular-resource/angular-resource.js'></script>
+    <script src = './ng-kinetic.js'></script>
+    <script src = './script.js'></script>
+  </body>
+```
